@@ -1,0 +1,2 @@
+# Ignore classes folder created by maven
+target
