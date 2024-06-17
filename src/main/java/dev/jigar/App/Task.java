@@ -8,7 +8,14 @@ public class Task {
     private LocalDate dueDate;
     private String status;
     private String description;
-
+    
+    public Task(String id, String title, LocalDate dueDate, String status, String description) {
+        this.id = id;
+        this.title = title;
+        this.dueDate = dueDate;
+        this.status = status;
+        this.description = description;
+    }
     public String getId() {
         return id;
     }
@@ -24,4 +31,5 @@ public class Task {
     public String getDescription() {
         return description;
     }
+
 }

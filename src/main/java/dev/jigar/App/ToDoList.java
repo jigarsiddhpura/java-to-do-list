@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import dev.jigar.Features.Actions;
+import dev.jigar.Features.AddTask;
+
 public class ToDoList {
     
     public static Map<String, Task> tasks = new LinkedHashMap<>();
@@ -16,6 +19,7 @@ public class ToDoList {
         while (isAppRunning) {
             showAvailableActions();
             int action = readAction();
+            executeAction(action);
         }
     }
 
@@ -29,11 +33,12 @@ public class ToDoList {
         System.out.println("1. Add Task");
         System.out.println("2. Update Task");
         System.out.println("3. Mark Task As Done");
-        System.out.println("4. Get Task");
+        System.out.println("4. Remove Task");
         System.out.println("5. Display All Tasks");
         System.out.println("6. Sort By Due Date");
-        System.out.println("7. Display All Tasks");
-        System.out.println("8. Save to file");
+        System.out.println("7. Sort By Description");
+        System.out.println("8. Save To File");
+        System.out.println("8. Read From File");
         System.out.println("9. Exit");
         System.out.println("");
     }
@@ -53,6 +58,18 @@ public class ToDoList {
             } catch (Exception e) {
                 System.out.println("Action must be a number");
             }
+        }
+    }
+
+    public void executeAction(int actionNum) {
+        Actions action;
+        switch (actionNum) {
+            case Actions.ADD_TASK:
+                action = new AddTask();
+                action.showActionsInformation();
+                String input = action.readUserInput();
+                action.executeAction(input);
+                break;
         }
     }
 }
