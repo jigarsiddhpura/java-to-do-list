@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import dev.jigar.DataSorting.DateSorting;
+import dev.jigar.DataSorting.DescSorting;
 import dev.jigar.Features.Actions;
 import dev.jigar.Features.AddTask;
 import dev.jigar.Features.DisplayTasks;
 import dev.jigar.Features.MarkAsDone;
 import dev.jigar.Features.RemoveTask;
 import dev.jigar.Features.UpdateTask;
+import dev.jigar.SaveRead.SaveTasksToFile;
 
 public class ToDoList {
     
@@ -48,11 +51,11 @@ public class ToDoList {
     }
 
     public int readAction() {
-        Scanner sc = new Scanner(System.in);
         List<Integer> availableActions = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
         while(true) {
             try {
                 System.out.println("Enter your action: ");
+                Scanner sc = new Scanner(System.in);
                 int action = sc.nextInt();
                 if (availableActions.contains(action)) {
                     return action;
@@ -72,7 +75,9 @@ public class ToDoList {
                 action = new AddTask();
                 action.showActionsInformation();
                 String input = action.readUserInput();
-                action.executeAction(input);
+                if (!input.equals("0")) {
+                    action.executeAction(input);
+                }
                 break;
             
             case Actions.MARK_AS_DONE:
@@ -125,13 +130,26 @@ public class ToDoList {
                 break;
 
             case Actions.SORT_TASKS_BY_DATE:
-                action = new DisplayTasks();
+                action = new DateSorting();
                 action.executeAction(null);
                 break;
 
             case Actions.SORT_TASKS_BY_DESC:
-                action = new DisplayTasks();
+                action = new DescSorting();
                 action.executeAction(null);
+                break;
+
+            case Actions.SAVE_TASKS_TO_FILE:
+                if (tasks.size() > 0) {
+
+                    action = new SaveTasksToFile();
+                    action.showActionsInformation();
+                    String path = action.readUserInput();
+                    if (!path.equals("0"))
+                        action.executeAction(path);
+                } else {
+                    System.out.println("There are no tasks to be saved!");
+                }
                 break;
         }
     }

@@ -26,18 +26,22 @@ public class AddTask extends Actions {
 
             String[] taskDetails = userInput.split(",");
 
-            if (taskDetails.length == 5) {
-                if (DateSorting.isDateValid("dd-MM-yyyy", taskDetails[2])) {
-                    if (ToDoList.tasks.get(taskDetails[0]) == null) {
-                        return userInput;
+            if (!userInput.equals("0")) {
+                if (taskDetails.length == 5) {
+                    if (DateSorting.isDateValid("dd-MM-yyyy", taskDetails[2])) {
+                        if (ToDoList.tasks.get(taskDetails[0]) == null) {
+                            return userInput;
+                        } else {
+                            System.out.println("ID already exists");
+                        }
                     } else {
-                        System.out.println("ID already exists");
+                        System.out.println("Input must have correct date format");
                     }
                 } else {
-                    System.out.println("Input must have correct date format");
+                    System.out.println("Input must be in mentioned format");
                 }
             } else {
-                System.out.println("Input must be in mentioned format");
+                return userInput;
             }
         }
     }

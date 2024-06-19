@@ -14,11 +14,11 @@ public class DescSorting extends Actions{
 
     @Override
     public void showActionsInformation() {
-        throw new UnsupportedOperationException("The requested operation is not supported.")
+        throw new UnsupportedOperationException("The requested operation is not supported.");
     }
     @Override
     public String readUserInput() {
-        throw new UnsupportedOperationException("The requested operation is not supported.")
+        throw new UnsupportedOperationException("The requested operation is not supported.");
     }
 
     @Override

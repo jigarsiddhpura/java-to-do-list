@@ -2,6 +2,8 @@ package dev.jigar.App;
 
 import java.time.LocalDate;
 
+import dev.jigar.DataSorting.DateSorting;
+
 public class Task {
     private String id;
     private String title;
@@ -43,6 +45,11 @@ public class Task {
     }
     public void setDescription(String _desc) {
         this.description = _desc;
+    }
+
+    @Override
+    public String toString() {
+        return id + title + DateSorting.convertDateToString(dueDate, "dd-MM-yyyy") + status + description;
     }
 
 }
