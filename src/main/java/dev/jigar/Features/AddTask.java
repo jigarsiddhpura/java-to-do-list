@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import dev.jigar.App.Task;
 import dev.jigar.App.ToDoList;
+import dev.jigar.DataSorting.DateSorting;
 
 public class AddTask extends Actions {
 
@@ -26,7 +27,7 @@ public class AddTask extends Actions {
             String[] taskDetails = userInput.split(",");
 
             if (taskDetails.length == 5) {
-                if (isDateValid("dd-MM-yyyy", taskDetails[2])) {
+                if (DateSorting.isDateValid("dd-MM-yyyy", taskDetails[2])) {
                     if (ToDoList.tasks.get(taskDetails[0]) == null) {
                         return userInput;
                     } else {
@@ -44,29 +45,10 @@ public class AddTask extends Actions {
     @Override
     public void executeAction(String command) {
         String[] taskDetails = command.split(",");
-        Task task = new Task(taskDetails[0], taskDetails[1], parseDate("dd-MM-yyyy", taskDetails[2]), taskDetails[3], taskDetails[4]);
+        Task task = new Task(taskDetails[0], taskDetails[1], DateSorting.parseDate("dd-MM-yyyy", taskDetails[2]), taskDetails[3], taskDetails[4]);
 
         ToDoList.tasks.put(task.getId(), task);
         System.out.println("\ndev.jigar.App.Task successfully");
-    }
-
-    public static boolean isDateValid(String format, String value) {
-        DateTimeFormatter formattings = DateTimeFormatter.ofPattern(format);
-        try {
-            LocalDate localDate = LocalDate.parse(value, formattings);
-            String result = localDate.format(formattings);
-            return result.equals(value);
-        } catch (Exception e) {
-            System.out.println("Date validation failed");
-        }
-        return false;
-    }
-
-
-    public static LocalDate parseDate(String format, String value) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
-        LocalDate localDate = LocalDate.parse(value,formatter);
-        return localDate;
     }
 
     

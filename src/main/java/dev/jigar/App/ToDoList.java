@@ -9,6 +9,7 @@ import java.util.Scanner;
 import dev.jigar.Features.Actions;
 import dev.jigar.Features.AddTask;
 import dev.jigar.Features.MarkAsDone;
+import dev.jigar.Features.UpdateTask;
 
 public class ToDoList {
     
@@ -75,6 +76,19 @@ public class ToDoList {
             case Actions.MARK_AS_DONE:
                 if (tasks.size() > 0) {
                     action = new MarkAsDone();
+                    action.showActionsInformation();
+                    String idToMark = action.readUserInput();
+                    if (!idToMark.equals("0")) {
+                        action.executeAction(idToMark);
+                    }
+                } else {
+                    System.out.println("\nNo tasks in the list. Enter a task first");
+                }
+                break;
+            
+            case Actions.UPDATE_TASK:
+                if (tasks.size() > 0) {
+                    action = new UpdateTask();
                     action.showActionsInformation();
                     String idToMark = action.readUserInput();
                     if (!idToMark.equals("0")) {

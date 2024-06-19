@@ -32,8 +32,17 @@ public class Task {
         return description;
     }
 
+    public void setTitle(String _title) {
+        this.title = _title;
+    }
+    public void setDueDate(LocalDate _date) {
+        this.dueDate = _date;
+    }
     public void setStatus(String _status) {
         this.status = _status;
+    }
+    public void setDescription(String _desc) {
+        this.description = _desc;
     }
 
 }
