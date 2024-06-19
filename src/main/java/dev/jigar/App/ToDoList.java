@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import dev.jigar.Features.Actions;
 import dev.jigar.Features.AddTask;
+import dev.jigar.Features.DisplayTasks;
 import dev.jigar.Features.MarkAsDone;
 import dev.jigar.Features.RemoveTask;
 import dev.jigar.Features.UpdateTask;
@@ -113,6 +114,15 @@ public class ToDoList {
                 }
                 break;
             
+            case Actions.DISPLAY_ALL_TASKS:
+                if (tasks.size() > 0) {
+                    action = new DisplayTasks();
+                    action.showActionsInformation();
+                    action.executeAction(null);
+                } else {
+                    System.out.println("Your list is empty, add tasks first! ");
+                }
+                break;
         }
     }
 }
