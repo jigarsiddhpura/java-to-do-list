@@ -123,6 +123,16 @@ public class ToDoList {
                     System.out.println("Your list is empty, add tasks first! ");
                 }
                 break;
+
+            case Actions.SORT_TASKS_BY_DATE:
+                action = new DisplayTasks();
+                action.executeAction(null);
+                break;
+
+            case Actions.SORT_TASKS_BY_DESC:
+                action = new DisplayTasks();
+                action.executeAction(null);
+                break;
         }
     }
 }
