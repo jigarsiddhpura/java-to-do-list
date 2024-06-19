@@ -9,6 +9,7 @@ import java.util.Scanner;
 import dev.jigar.Features.Actions;
 import dev.jigar.Features.AddTask;
 import dev.jigar.Features.MarkAsDone;
+import dev.jigar.Features.RemoveTask;
 import dev.jigar.Features.UpdateTask;
 
 public class ToDoList {
@@ -96,6 +97,19 @@ public class ToDoList {
                     }
                 } else {
                     System.out.println("\nNo tasks in the list. Enter a task first");
+                }
+                break;
+            
+            
+            case Actions.REMOVE_TASK:
+                if (tasks.size() > 0) {
+                    action = new RemoveTask();
+                    action.showActionsInformation();
+                    String id = action.readUserInput();
+                    if (!id.equals("0"))
+                        action.executeAction(id);
+                } else {
+                    System.out.println("Your list is empty, add tasks first! ");
                 }
                 break;
             
