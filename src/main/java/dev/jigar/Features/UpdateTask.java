@@ -9,7 +9,7 @@ import dev.jigar.DataSorting.DateSorting;
 public class UpdateTask extends Actions{
     @Override
     public void showActionsInformation() {
-        System.out.println("to update a task, follow the instructions and press ENTER: ");
+        System.out.println("\nTo update a task, maintain the below format and press ENTER: ");
         System.out.println("<unique_id>,<title_of_the_task>,<due-date-in-format:DD-MM-YYYY>,<status>,<description>");
         System.out.println("ID here represent the ID of the task u wanna update");
         System.out.println("insert a (-) if update is not required in the specific parameter\n");
@@ -75,9 +75,9 @@ public class UpdateTask extends Actions{
         }
 
         if (taskEdited) {
-            System.out.println("Task updated successfully");
+            System.out.println("\nTask updated successfully");
         } else {
-            System.out.println("No changes applied");
+            System.out.println("\nNo changes applied");
         }
     }
 }

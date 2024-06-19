@@ -14,6 +14,7 @@ import dev.jigar.Features.DisplayTasks;
 import dev.jigar.Features.MarkAsDone;
 import dev.jigar.Features.RemoveTask;
 import dev.jigar.Features.UpdateTask;
+import dev.jigar.SaveRead.ReadFromFile;
 import dev.jigar.SaveRead.SaveTasksToFile;
 
 public class ToDoList {
@@ -36,7 +37,7 @@ public class ToDoList {
     }
 
     public void showAvailableActions() {
-        System.out.println("Available Actions - ");
+        System.out.println("\nAvailable Actions - ");
         System.out.println("1. Add Task");
         System.out.println("2. Update Task");
         System.out.println("3. Mark Task As Done");
@@ -45,8 +46,8 @@ public class ToDoList {
         System.out.println("6. Sort By Due Date");
         System.out.println("7. Sort By Description");
         System.out.println("8. Save To File");
-        System.out.println("8. Read From File");
-        System.out.println("9. Exit");
+        System.out.println("9. Read From File");
+        System.out.println("10. Exit");
         System.out.println("");
     }
 
@@ -150,6 +151,18 @@ public class ToDoList {
                 } else {
                     System.out.println("There are no tasks to be saved!");
                 }
+                break;
+
+            case Actions.READ_FROM_FILE:
+                action = new ReadFromFile();
+                action.showActionsInformation();
+                String path = action.readUserInput();
+                if (!path.equals("0"))
+                    action.executeAction(path);
+                break;
+
+            case Actions.EXIT:
+                isAppRunning = false;
                 break;
         }
     }

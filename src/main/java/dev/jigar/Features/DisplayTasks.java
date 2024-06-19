@@ -27,5 +27,6 @@ public class DisplayTasks extends Actions{
             Task task = entry.getValue();
             System.out.println("ID: " + key + ", Title: " + task.getTitle() + ", Due date: " + task.getDueDate() + ", Status: " + task.getStatus() + ", Description: " + task.getDescription());
         }
+        System.out.println("");
     }
 }

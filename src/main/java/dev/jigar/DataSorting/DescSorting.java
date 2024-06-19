@@ -41,7 +41,7 @@ public class DescSorting extends Actions{
             ToDoList.tasks.put(entry.getKey(), entry.getValue());
         }
 
-        System.out.println("Task sorted by description successfully");
+        System.out.println("\nTask sorted by description successfully");
     }
 
 

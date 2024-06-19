@@ -44,7 +44,7 @@ public class DateSorting extends Actions{
             ToDoList.tasks.put(entry.getKey(), entry.getValue());
         }
 
-        System.out.println("Task sorted by due date successfully");
+        System.out.println("\nTask sorted by due date successfully");
     }
 
     public static String convertDateToString(LocalDate date, String format) {

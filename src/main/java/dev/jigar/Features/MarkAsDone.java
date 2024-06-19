@@ -16,9 +16,9 @@ public class MarkAsDone extends Actions{
     public String readUserInput() {
         while(true) {
             System.out.println("Enter task ID - ");
-            Scanner sc = new Scanner(System.in);
             
             try {
+                Scanner sc = new Scanner(System.in);
                 String userInput = sc.nextLine();
                 if (!userInput.equals("0")) {
                     Task task = ToDoList.tasks.get(userInput);
@@ -27,6 +27,8 @@ public class MarkAsDone extends Actions{
                     } else {
                         System.out.println("No task found with ID " + userInput + ". Please try again");
                     }
+                } else {
+                    return userInput;
                 }
             } catch (Exception e) {
                 System.out.println("Enter a valid ID or or 0 to RETURN");

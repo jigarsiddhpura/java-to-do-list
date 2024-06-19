@@ -49,7 +49,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return id + title + DateSorting.convertDateToString(dueDate, "dd-MM-yyyy") + status + description;
+        return id + "," + title + "," + DateSorting.convertDateToString(dueDate, "dd-MM-yyyy") + "," + status + "," + description;
     }
 
 }
