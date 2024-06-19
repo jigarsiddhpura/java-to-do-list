@@ -26,7 +26,7 @@ public class AddTask extends Actions {
             String[] taskDetails = userInput.split(",");
 
             if (taskDetails.length == 5) {
-                if (isDateValid(taskDetails[2])) {
+                if (isDateValid("dd-MM-yyyy", taskDetails[2])) {
                     if (ToDoList.tasks.get(taskDetails[0]) == null) {
                         return userInput;
                     } else {
@@ -44,19 +44,18 @@ public class AddTask extends Actions {
     @Override
     public void executeAction(String command) {
         String[] taskDetails = command.split(",");
-        Task task = new Task(taskDetails[0], taskDetails[1], parseDate("dd-MM-YYYY", taskDetails[2]), taskDetails[3], taskDetails[4]);
+        Task task = new Task(taskDetails[0], taskDetails[1], parseDate("dd-MM-yyyy", taskDetails[2]), taskDetails[3], taskDetails[4]);
 
         ToDoList.tasks.put(task.getId(), task);
-        System.out.println("dev.jigar.App.Task successfully");
+        System.out.println("\ndev.jigar.App.Task successfully");
     }
 
-    public static boolean isDateValid(String dateString) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+    public static boolean isDateValid(String format, String value) {
+        DateTimeFormatter formattings = DateTimeFormatter.ofPattern(format);
         try {
-            LocalDate localDate = LocalDate.parse(dateString, dtf);
-            String result = localDate.format(dtf);
-
-            return result.equals(dateString);
+            LocalDate localDate = LocalDate.parse(value, formattings);
+            String result = localDate.format(formattings);
+            return result.equals(value);
         } catch (Exception e) {
             System.out.println("Date validation failed");
         }
@@ -66,7 +65,7 @@ public class AddTask extends Actions {
 
     public static LocalDate parseDate(String format, String value) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
-        LocalDate localDate = LocalDate.parse(value, formatter);
+        LocalDate localDate = LocalDate.parse(value,formatter);
         return localDate;
     }
 
