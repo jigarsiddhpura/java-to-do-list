@@ -70,7 +70,13 @@ public class ToDoList {
     }
 
     public void executeAction(int actionNum) {
-        Actions action;
+
+        Actions action; // this is composition 
+        // a design principle where a class contains objects of other classes as its instance variable (but here, action - local variable)
+
+        // Detail Explaination - 
+        // Inheritance means an object inheriting reusable properties of the base class. Compositions mean that an object holds other objects. In Inheritance, there is only one object in memory (derived object) whereas, in Composition, the parent object holds references of all composed objects. From a design perspective, inheritance is "is a" relationship among objects whereas Composition is "has a" relationship among objects.
+
         switch (actionNum) {
             case Actions.ADD_TASK:
                 action = new AddTask();
